@@ -1,0 +1,17 @@
+DEPENDENCIES
+1. Add gradle dependencies(retrofit, gson converter), exceptions, internet permissions, and cleartext
+
+SETUP
+2. Create the model, view, presenter packages
+3. Create the model Pojo classes using http://www.jsonschema2pojo.org/
+4. Create the API interface in the model
+5. create the presenter and the presenter contract interface
+6. add initRetrofit method to presentercontract interface to load json into app
+7. implement in presentercontract interface and implent methods
+
+FETCH DATA
+8. define retrofit in presenter - fetch base url
+9. Implement callback methods (onresponse/onfailure)
+10. Create a customViewHolder - define variables and bind them to ids/implement onclicklistener/
+11. Create a customAdaptor - implement custom view holder methods/inflate item-layout/add picassso/bind data with onbindviwholder methods
+12. Work in the Main Activity class - declare variables for the recycler/presenter/
