@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".view.WebActivity"/>
+        <activity android:name=".view.VideoActivity"/>
         <activity android:name=".view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.SplashScreen">

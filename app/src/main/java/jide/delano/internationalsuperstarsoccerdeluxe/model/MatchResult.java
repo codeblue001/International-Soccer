@@ -1,10 +1,13 @@
 package jide.delano.internationalsuperstarsoccerdeluxe.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MatchResult {
+public class MatchResult implements Parcelable {
 
     @SerializedName("title")
     @Expose
@@ -33,6 +36,7 @@ public class MatchResult {
     @SerializedName("videos")
     @Expose
     private List<Video> videos = null;
+
 
     public String getTitle() {
         return title;
@@ -106,4 +110,44 @@ public class MatchResult {
         this.videos = videos;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeTypedList(this.videos);
+        parcel.writeParcelable(this.competition, i);
+        parcel.writeParcelable(this.side2, i);
+        parcel.writeParcelable(this.side1, i);
+        parcel.writeString(this.date);
+        parcel.writeString(this.thumbnail);
+        parcel.writeString(this.url);
+        parcel.writeString(this.embed);
+        parcel.writeString(this.title);
+    }
+    protected MatchResult(Parcel in) {
+        this.videos = in.createTypedArrayList(Video.CREATOR);
+        this.competition = in.readParcelable(Competition.class.getClassLoader());
+        this.side2 = in.readParcelable(Side2.class.getClassLoader());
+        this.side1 = in.readParcelable(Side1.class.getClassLoader());
+        this.date = in.readString();
+        this.thumbnail = in.readString();
+        this.url = in.readString();
+        this.embed = in.readString();
+        this.title = in.readString();
+    }
+
+    public static final Creator<MatchResult> CREATOR = new Creator<MatchResult>() {
+        @Override
+        public MatchResult createFromParcel(Parcel source) {
+            return new MatchResult(source);
+        }
+
+        @Override
+        public MatchResult[] newArray(int size) {
+            return new MatchResult[size];
+        }
+    };
 }

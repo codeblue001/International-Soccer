@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    android:orientation="vertical"
-    tools:context=".view.MainActivity">
+    tools:context=".view.VideoActivity">
 
-    <EditText
+    <WebView
+        android:id="@+id/detail_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/video_url_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="#fff"
-        android:fontFamily="serif"
-        android:hint="Search for your team ..."
-        android:paddingLeft="5dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="#696969"/>
+        android:padding="1dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/detail_webview" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/video_recyclerview"
+    <TextView
+        android:id="@+id/side1_name_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:padding="1dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:id="@+id/side2_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/detail_competition_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="1dp"
+        android:textSize="18sp"/>
 
 </LinearLayout>

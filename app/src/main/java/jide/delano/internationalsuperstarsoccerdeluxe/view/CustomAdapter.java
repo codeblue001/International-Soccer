@@ -3,22 +3,19 @@ package jide.delano.internationalsuperstarsoccerdeluxe.view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import jide.delano.internationalsuperstarsoccerdeluxe.R;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.MatchResult;
+
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
     private List<MatchResult> dataSet;
-    private Context context;
     private static final String TAG = "CustomAdapter";
+    private Context context;
 
     public CustomAdapter(Context context) {
         this.context = context;
@@ -28,7 +25,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         this.dataSet = dataSet;
         notifyDataSetChanged();
     }
-
 
     @NonNull
     @Override
@@ -49,4 +45,5 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     public int getItemCount() {
         return dataSet != null ? dataSet.size() : 0;
     }
+
 }

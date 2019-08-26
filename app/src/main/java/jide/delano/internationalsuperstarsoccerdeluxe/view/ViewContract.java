@@ -3,7 +3,7 @@ package jide.delano.internationalsuperstarsoccerdeluxe.view;
 import java.util.List;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.MatchResult;
 
-public interface ViewContract {
+public interface ViewContract  {
     void onBindPresenter();
     void initNetworkCall();
     void getMatchData(List<MatchResult> dataSet);
