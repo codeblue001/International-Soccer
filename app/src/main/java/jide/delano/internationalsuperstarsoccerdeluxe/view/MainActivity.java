@@ -21,6 +21,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
     private List<MatchResult> dataSet = new ArrayList<>();
     private DrawerLayout drawer;
     private MatchResult matchResult;
+
 
 
     @Override
@@ -76,9 +79,6 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
                         break;
                     case R.id.ic_seria_a:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SeriaAFragment()).commit();
-                        break;
-                    case R.id.ic_international:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InternationalFragment()).commit();
                         break;
                 }
                 return true;
