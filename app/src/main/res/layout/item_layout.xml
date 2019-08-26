@@ -12,7 +12,8 @@
         android:id="@+id/cv_match"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardElevation="8dp"
+        android:background="#DA70D6"
+        app:cardElevation="16dp"
         app:cardCornerRadius="8dp">
 
         <LinearLayout
@@ -31,21 +32,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textSize="18sp"/>
+                android:fontFamily="@font/aclonica"
+                android:background="#CBD3D8	"
+                android:textSize="18sp"
+                android:textColor="#000"/>
 
             <TextView
                 android:id="@+id/tv_competition_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textSize="18sp"/>
+                android:background="#CBD3D8"
+                android:fontFamily="@font/aclonica"
+                android:textSize="18sp"
+                android:textColor="#000"/>
 
             <TextView
                 android:id="@+id/tv_match_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/aclonica"
                 android:gravity="center_horizontal"
-                android:textSize="18sp" />
+                android:background="#CBD3D8"
+                android:textSize="18sp"
+                android:textColor="#000"/>
 
         </LinearLayout>
 

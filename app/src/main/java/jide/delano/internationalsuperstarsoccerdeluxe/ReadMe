@@ -15,3 +15,8 @@ FETCH DATA
 10. Create a customViewHolder - define variables and bind them to ids/implement onclicklistener/
 11. Create a customAdaptor - implement custom view holder methods/inflate item-layout/add picassso/bind data with onbindviwholder methods
 12. Work in the Main Activity class - declare variables for the recycler/presenter/
+
+LAYOUT
+13. Create Splash layout
+14. Create Recycler layout, item layout and cardview layout
+15. Create a menu drawable

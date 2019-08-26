@@ -1,5 +1,6 @@
 package jide.delano.internationalsuperstarsoccerdeluxe.view;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.os.Bundle;
 import jide.delano.internationalsuperstarsoccerdeluxe.R;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
     private LinearLayoutManager linearLayoutManager;
     private CustomAdapter customAdapter;
     private List<MatchResult> dataSet = new ArrayList<>();
+    private DrawerLayout drawer;
 
 
     @Override
@@ -38,12 +43,31 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle =  new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
         Intent intent = getIntent();
         presenter = new Presenter();
 
         initUI();
         onBindPresenter();
         initNetworkCall();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
 
     }
 

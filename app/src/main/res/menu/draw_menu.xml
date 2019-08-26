@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/ic_Primier_league"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Primier League" />
+        <item
+            android:id="@+id/ic_la_liga"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:title="La Liga" />
+        <item
+            android:id="@+id/bundesliga"
+            android:icon="@drawable/ic_star_half_black_24dp"
+            android:title="Bundesliga" />
+        <item
+            android:id="@+id/seria_a"
+            android:icon="@drawable/ic_star_half_black_24dp"
+            android:title="Serie A" />
+        <item
+            android:id="@+id/ligue_1"
+            android:icon="@drawable/ic_star_half_black_24dp"
+            android:title="Ligue 1" />
+        <item
+            android:id="@+id/major_league_soccer"
+            android:icon="@drawable/ic_star_half_black_24dp"
+            android:title="Major League Soccer" />
+    </group>
+
+    <item android:title="Social">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share_black_24dp"
+                android:title="Share" />
+            <item
+                android:id="@+id/ic_favorite"
+                android:icon="@drawable/ic_star_half_black_24dp"
+                android:title="Favorite" />
+        </menu>
+
+    </item>
+</menu>
