@@ -110,24 +110,38 @@ public class MatchResult implements Parcelable {
         this.videos = videos;
     }
 
-    @Override
+
+    //Parcelable
+    //https://developer.android.com/reference/android/os/Parcelable.html
+
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeTypedList(this.videos);
-        parcel.writeParcelable(this.competition, i);
-        parcel.writeParcelable(this.side2, i);
-        parcel.writeParcelable(this.side1, i);
-        parcel.writeString(this.date);
-        parcel.writeString(this.thumbnail);
-        parcel.writeString(this.url);
-        parcel.writeString(this.embed);
-        parcel.writeString(this.title);
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeTypedList(this.videos);
+        out.writeParcelable(this.competition, flags);
+        out.writeParcelable(this.side2, flags);
+        out.writeParcelable(this.side1, flags);
+        out.writeString(this.date);
+        out.writeString(this.thumbnail);
+        out.writeString(this.url);
+        out.writeString(this.embed);
+        out.writeString(this.title);
     }
-    protected MatchResult(Parcel in) {
+
+    public static final Parcelable.Creator<MatchResult> CREATOR
+            = new Parcelable.Creator<MatchResult>() {
+        public MatchResult createFromParcel(Parcel in) {
+            return new MatchResult(in);
+        }
+
+        public MatchResult[] newArray(int size) {
+            return new MatchResult[size];
+        }
+    };
+
+    private MatchResult(Parcel in) {
         this.videos = in.createTypedArrayList(Video.CREATOR);
         this.competition = in.readParcelable(Competition.class.getClassLoader());
         this.side2 = in.readParcelable(Side2.class.getClassLoader());
@@ -138,16 +152,4 @@ public class MatchResult implements Parcelable {
         this.embed = in.readString();
         this.title = in.readString();
     }
-
-    public static final Creator<MatchResult> CREATOR = new Creator<MatchResult>() {
-        @Override
-        public MatchResult createFromParcel(Parcel source) {
-            return new MatchResult(source);
-        }
-
-        @Override
-        public MatchResult[] newArray(int size) {
-            return new MatchResult[size];
-        }
-    };
 }

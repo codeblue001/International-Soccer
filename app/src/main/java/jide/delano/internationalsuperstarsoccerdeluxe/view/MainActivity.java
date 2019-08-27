@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
         Toast toast = Toast.makeText(MainActivity.this, "It's the recycle view dummy!", Toast.LENGTH_LONG);
         toast.show();
         Intent intent = new Intent(MainActivity.this, VideoActivity.class);
-        intent.putExtra("jsonRes", matchResult);
+        intent.putExtra("videoResponse", matchResult);
         startActivity(intent);
     }
 }

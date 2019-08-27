@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Competition implements Parcelable{
+public class Competition implements Parcelable {
 
     @SerializedName("name")
     @Expose
@@ -41,36 +41,34 @@ public class Competition implements Parcelable{
     public void setUrl(String url) {
         this.url = url;
     }
-    @Override
+
+    //Parcelable
+    //https://developer.android.com/reference/android/os/Parcelable.html
+
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.url);
-        parcel.writeInt(this.id);
-        parcel.writeString(this.name);
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(url);
+        out.writeInt(id);
+        out.writeString(name);
     }
 
-    public Competition() {
-    }
-
-    protected Competition(Parcel in) {
-        this.url = in.readString();
-        this.id = in.readInt();
-        this.name = in.readString();
-    }
-
-    public static final Parcelable.Creator<Competition> CREATOR = new Parcelable.Creator<Competition>() {
-        @Override
-        public Competition createFromParcel(Parcel source) {
-            return new Competition(source);
+    public static final Parcelable.Creator<Competition> CREATOR
+            = new Parcelable.Creator<Competition>() {
+        public Competition createFromParcel(Parcel in) {
+            return new Competition(in);
         }
 
-        @Override
         public Competition[] newArray(int size) {
             return new Competition[size];
         }
     };
+
+    private Competition(Parcel in) {
+        url = in.readString();
+        id = in.readInt();
+        name = in.readString();
+    }
 }

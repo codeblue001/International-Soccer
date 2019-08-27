@@ -31,35 +31,31 @@ public class Video implements Parcelable {
         this.embed = embed;
     }
 
+    //Parcelable
+    //https://developer.android.com/reference/android/os/Parcelable.html
 
-    @Override
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int i) {
-        dest.writeString(this.embed);
-        dest.writeString(this.title);
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(embed);
+        out.writeString(title);
     }
 
-    public Video() {
-    }
-
-    protected Video(Parcel in) {
-        this.embed = in.readString();
-        this.title = in.readString();
-    }
-
-    public static final Creator<Video> CREATOR = new Creator<Video>() {
-        @Override
-        public Video createFromParcel(Parcel source) {
-            return new Video(source);
+    public static final Parcelable.Creator<Video> CREATOR
+            = new Parcelable.Creator<Video>() {
+        public Video createFromParcel(Parcel in) {
+            return new Video(in);
         }
 
-        @Override
         public Video[] newArray(int size) {
             return new Video[size];
         }
     };
+
+    private Video(Parcel in) {
+        embed = in.readString();
+        title = in.readString();
+    }
 }

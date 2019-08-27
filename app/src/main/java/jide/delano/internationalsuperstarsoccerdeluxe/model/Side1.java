@@ -31,34 +31,31 @@ public class Side1 implements Parcelable {
         this.url = url;
     }
 
-    public Side1() {
-    }
+    //Parcelable
+    //https://developer.android.com/reference/android/os/Parcelable.html
 
-    protected Side1(Parcel in) {
-        this.url = in.readString();
-        this.name = in.readString();
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.url);
-        parcel.writeString(this.name);
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(url);
+        out.writeString(name);
     }
 
-    public static final Creator<Side1> CREATOR = new Creator<Side1>() {
-        @Override
-        public Side1 createFromParcel(Parcel source) {
-            return new Side1(source);
+    public static final Parcelable.Creator<Side1> CREATOR
+            = new Parcelable.Creator<Side1>() {
+        public Side1 createFromParcel(Parcel in) {
+            return new Side1(in);
         }
 
-        @Override
         public Side1[] newArray(int size) {
             return new Side1[size];
         }
     };
+
+    private Side1(Parcel in) {
+        url = in.readString();
+        name = in.readString();
+    }
 }
