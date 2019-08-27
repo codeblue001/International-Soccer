@@ -17,12 +17,15 @@ public class VideoActivity extends AppCompatActivity {
     private WebView vide0WebView;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        matchResult = new MatchResult();
+
         Intent intent = getIntent();
-        matchResult = intent.getParcelableExtra("videoResponse");
+        matchResult =intent.getParcelableExtra("videoResponse");
+
 
         embed = matchResult.getEmbed();
 

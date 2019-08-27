@@ -50,9 +50,9 @@ public class Competition implements Parcelable {
     }
 
     public void writeToParcel(Parcel out, int flags) {
-        out.writeString(url);
-        out.writeInt(id);
-        out.writeString(name);
+        out.writeString(this.url);
+        out.writeInt(this.id);
+        out.writeString(this.name);
     }
 
     public static final Parcelable.Creator<Competition> CREATOR
@@ -66,9 +66,12 @@ public class Competition implements Parcelable {
         }
     };
 
-    private Competition(Parcel in) {
-        url = in.readString();
-        id = in.readInt();
-        name = in.readString();
+    public Competition() {
+    }
+
+    protected Competition(Parcel in) {
+        this.url = in.readString();
+        this.id = in.readInt();
+        this.name = in.readString();
     }
 }

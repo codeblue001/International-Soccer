@@ -39,8 +39,8 @@ public class Side1 implements Parcelable {
     }
 
     public void writeToParcel(Parcel out, int flags) {
-        out.writeString(url);
-        out.writeString(name);
+        out.writeString(this.url);
+        out.writeString(this.name);
     }
 
     public static final Parcelable.Creator<Side1> CREATOR
@@ -54,8 +54,11 @@ public class Side1 implements Parcelable {
         }
     };
 
-    private Side1(Parcel in) {
-        url = in.readString();
-        name = in.readString();
+    public Side1() {
+    }
+
+    protected Side1(Parcel in) {
+       this.url = in.readString();
+        this.name = in.readString();
     }
 }

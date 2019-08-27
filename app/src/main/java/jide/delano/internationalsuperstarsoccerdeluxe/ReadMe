@@ -24,5 +24,11 @@ LAYOUT
 
 Webview
 17. Create webview for each fragment
+18. Embed video
+19. Implement the Parcelable class
+
+Other Components
+20. Implement Fav option
+21. Implement Share option
 
 /*fav, share, etc*/

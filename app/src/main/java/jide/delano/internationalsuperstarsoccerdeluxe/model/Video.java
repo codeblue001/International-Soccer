@@ -39,8 +39,8 @@ public class Video implements Parcelable {
     }
 
     public void writeToParcel(Parcel out, int flags) {
-        out.writeString(embed);
-        out.writeString(title);
+        out.writeString(this.embed);
+        out.writeString(this.title);
     }
 
     public static final Parcelable.Creator<Video> CREATOR
@@ -54,8 +54,11 @@ public class Video implements Parcelable {
         }
     };
 
-    private Video(Parcel in) {
-        embed = in.readString();
-        title = in.readString();
+    public Video() {
+    }
+
+    protected Video(Parcel in) {
+        this.embed = in.readString();
+        this.title = in.readString();
     }
 }

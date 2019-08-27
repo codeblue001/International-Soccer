@@ -141,7 +141,7 @@ public class MatchResult implements Parcelable {
         }
     };
 
-    private MatchResult(Parcel in) {
+    protected MatchResult(Parcel in) {
         this.videos = in.createTypedArrayList(Video.CREATOR);
         this.competition = in.readParcelable(Competition.class.getClassLoader());
         this.side2 = in.readParcelable(Side2.class.getClassLoader());
@@ -151,5 +151,8 @@ public class MatchResult implements Parcelable {
         this.url = in.readString();
         this.embed = in.readString();
         this.title = in.readString();
+    }
+
+    public MatchResult() {
     }
 }
