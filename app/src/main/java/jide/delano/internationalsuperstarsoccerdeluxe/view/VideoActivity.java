@@ -11,9 +11,8 @@ import jide.delano.internationalsuperstarsoccerdeluxe.R;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.MatchResult;
 
 public class VideoActivity extends AppCompatActivity {
-    private MatchResult matchResult;
+    private MatchResult dataSet;
     private String embed;
-    private String time;
     private WebView vide0WebView;
 
     @Override
@@ -21,13 +20,13 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        matchResult = new MatchResult();
+        dataSet = new MatchResult();
 
         Intent intent = getIntent();
-        matchResult =intent.getParcelableExtra("videoResponse");
+        dataSet =intent.getParcelableExtra("videoResponse");
 
 
-        embed = matchResult.getEmbed();
+        embed = dataSet.getEmbed();
 
         vide0WebView =  findViewById(R.id.detail_webview);
         vide0WebView.setWebChromeClient(new WebChromeClient());

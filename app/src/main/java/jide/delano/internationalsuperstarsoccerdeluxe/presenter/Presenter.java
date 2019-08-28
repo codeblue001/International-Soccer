@@ -1,6 +1,6 @@
 package jide.delano.internationalsuperstarsoccerdeluxe.presenter;
 
-import android.util.Log;
+
 import java.util.List;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.ApiInterface;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.MatchResult;
@@ -14,9 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Presenter implements PresenterContract {
 
     private ViewContract view;
-    private ApiInterface apiInterface;
-    private static final String TAG = Presenter.class.getName();
-    private List<MatchResult> dataSet;
 
     @Override
     public void onBindView(ViewContract view) {
@@ -24,7 +21,7 @@ public class Presenter implements PresenterContract {
     }
 
     @Override
-    public void unBind() {
+    public void unBindView() {
         view = null;
     }
 
@@ -36,16 +33,13 @@ public class Presenter implements PresenterContract {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //Create instance of API interface
-        apiInterface = retrofit.create(ApiInterface.class);
-
-        //Execute call request using the call object
-        Call<List<MatchResult>> call = apiInterface.getMatchResultsData();
+      retrofit.create(ApiInterface.class)
+              .getMatchResultsData()
         //use enqueue instead of execute so that it runs asynchronously
-        call.enqueue(new Callback<List<MatchResult>>() {
+        .enqueue(new Callback<List<MatchResult>>() {
             @Override
             public void onResponse(Call<List<MatchResult>> call, Response<List<MatchResult>> response) {
                 onMatchResultDataSuccess(response.body());
-                Log.d(TAG, "onResponse: " + response.body());
             }
 
             @Override
@@ -54,8 +48,6 @@ public class Presenter implements PresenterContract {
             }
         });
     }
-
-
 
     @Override
     public void onMatchResultDataSuccess(List<MatchResult> match) {

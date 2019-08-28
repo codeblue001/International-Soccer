@@ -13,37 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/video_url_textview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="1dp"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/detail_webview" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_half_black_24dp"
+            android:padding="5dp"/>
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_black_24dp"
+            android:padding="5dp"/>
 
-    <TextView
-        android:id="@+id/side1_name_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp"
-        android:textSize="18sp"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/side2_name_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp"
-        android:textSize="18sp"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/detail_competition_name_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="1dp"
-        android:textSize="18sp"/>
+    </LinearLayout>
 
 </LinearLayout>

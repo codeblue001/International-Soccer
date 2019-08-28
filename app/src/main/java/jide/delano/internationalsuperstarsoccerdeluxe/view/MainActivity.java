@@ -4,45 +4,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import jide.delano.internationalsuperstarsoccerdeluxe.R;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.widget.VideoView;
-
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import jide.delano.internationalsuperstarsoccerdeluxe.R;
 import jide.delano.internationalsuperstarsoccerdeluxe.model.MatchResult;
 import jide.delano.internationalsuperstarsoccerdeluxe.presenter.Presenter;
 
-public class MainActivity extends AppCompatActivity implements ViewContract {
+public class MainActivity extends AppCompatActivity implements ViewContract{
 
     private RecyclerView recyclerView;
     private Presenter presenter;
-    private LinearLayoutManager linearLayoutManager;
     private CustomAdapter customAdapter;
-    private List<MatchResult> dataSet = new ArrayList<>();
     private DrawerLayout drawer;
     private MatchResult matchResult;
 
@@ -90,9 +73,6 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Intent intent = getIntent();
-        presenter = new Presenter();
-
         initUI();
         onBindPresenter();
         initNetworkCall();
@@ -128,9 +108,8 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
     @Override
     public void initUI() {
         recyclerView = findViewById(R.id.video_recyclerview);
-        customAdapter = new CustomAdapter(this);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        customAdapter = new CustomAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(customAdapter);
 
     }
@@ -139,13 +118,5 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
     public void getFailureMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT);
 
-    }
-
-    public void onClick(View view) {
-        Toast toast = Toast.makeText(MainActivity.this, "It's the recycle view dummy!", Toast.LENGTH_LONG);
-        toast.show();
-        Intent intent = new Intent(MainActivity.this, VideoActivity.class);
-        intent.putExtra("videoResponse", matchResult);
-        startActivity(intent);
     }
 }
